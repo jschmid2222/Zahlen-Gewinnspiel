@@ -32,5 +32,15 @@ public class GewinnController {
                 );
             }
         });
+
+        view.btnNochmal.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+
+                view.txtSpieler.setText("");
+                view.txtComputer.setText("");
+                view.lblRundenErgebnis.setText("Rundenergebnis:");
+            }
+        });
     }
 }
