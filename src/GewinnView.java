@@ -16,26 +16,51 @@ public class GewinnView extends JFrame {
         setTitle("Zahlen-Gewinnspiel (v1.0)");
         setSize(500, 250);
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        setLayout(new GridLayout(3, 2));
+        setLocationRelativeTo(null);
 
-        lblRundenErgebnis = new JLabel("Rundenergebnis:", SwingConstants.CENTER);
-        lblGesamtPunkte = new JLabel("Gesamtpunkte: 30", SwingConstants.CENTER);
+        setLayout(new BorderLayout());
+
+        JPanel oben = new JPanel(new GridLayout(2, 2));
+
+        oben.add(new JLabel("Rundenergebnis:", SwingConstants.CENTER));
+        oben.add(new JLabel("Gesamtpunkte:", SwingConstants.CENTER));
+
+        lblRundenErgebnis = new JLabel("", SwingConstants.CENTER);
+        lblGesamtPunkte = new JLabel("30", SwingConstants.CENTER);
+
+        lblRundenErgebnis.setOpaque(true);
+        lblGesamtPunkte.setOpaque(true);
+
+        lblRundenErgebnis.setBackground(Color.WHITE);
+        lblGesamtPunkte.setBackground(Color.WHITE);
+
+        oben.add(lblRundenErgebnis);
+        oben.add(lblGesamtPunkte);
+
+        JPanel mitte = new JPanel(new GridLayout(2, 2));
+
+        mitte.add(new JLabel("Deine Zahl:", SwingConstants.CENTER));
+        mitte.add(new JLabel("Computer:", SwingConstants.CENTER));
 
         txtSpieler = new JTextField();
         txtComputer = new JTextField();
 
+        txtSpieler.setHorizontalAlignment(JTextField.CENTER);
+        txtComputer.setHorizontalAlignment(JTextField.CENTER);
+
         txtComputer.setEditable(false);
 
+        mitte.add(txtSpieler);
+        mitte.add(txtComputer);
+
+        JPanel unten = new JPanel();
+
         btnNochmal = new JButton("Noch einmal!");
+        unten.add(btnNochmal);
 
-        add(lblRundenErgebnis);
-        add(lblGesamtPunkte);
-
-        add(txtSpieler);
-        add(txtComputer);
-
-        add(new JLabel(""));
-        add(btnNochmal);
+        add(oben, BorderLayout.NORTH);
+        add(mitte, BorderLayout.CENTER);
+        add(unten, BorderLayout.SOUTH);
 
         setVisible(true);
     }

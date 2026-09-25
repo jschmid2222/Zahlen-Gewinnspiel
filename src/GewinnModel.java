@@ -1,4 +1,5 @@
 public class GewinnModel {
+
     private int gesamtPunkte;
     private int spielerZahl;
     private int computerZahl;
@@ -25,29 +26,25 @@ public class GewinnModel {
     }
 
     public void berechneRunde(int spielerZahl) {
-        int ergebnis = computerZahl - spielerZahl;
-        if(ergebnis == 0) {
-            gesamtPunkte += 20;
-        } else if (ergebnis == -1 || ergebnis == 1) {
-            gesamtPunkte += 5;
+
+        this.spielerZahl = spielerZahl;
+
+        if (spielerZahl == computerZahl) {
+            rundenErgebnis = 20;
+        } else if (Math.abs(spielerZahl - computerZahl) == 1) {
+            rundenErgebnis = 5;
         } else {
-            gesamtPunkte -= 10;
+            rundenErgebnis = -10;
         }
+
+        gesamtPunkte = gesamtPunkte + rundenErgebnis;
     }
 
     public boolean hatGewonnen() {
-        if(gesamtPunkte >= 100) {
-            return true;
-        }else {
-            return false;
-        }
+        return gesamtPunkte >= 100;
     }
 
     public boolean hatVerloren() {
-        if(gesamtPunkte <= 0) {
-            return true;
-        }else {
-            return false;
-        }
+        return gesamtPunkte <= 0;
     }
 }
