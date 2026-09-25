@@ -38,6 +38,8 @@ public class GewinnController {
                     view.lblGesamtPunkte.setText(
                             String.valueOf(model.getGesamtPunkte())
                     );
+                    view.txtSpieler.setEditable(false);
+                    view.btnNochmal.setEnabled(true);
 
                 } catch (NumberFormatException ex) {
 
@@ -52,6 +54,9 @@ public class GewinnController {
                 view.txtSpieler.setText("");
                 view.txtComputer.setText("");
                 view.lblRundenErgebnis.setText("");
+
+                view.txtSpieler.setEditable(true);
+                view.btnNochmal.setEnabled(false);
 
                 view.txtSpieler.requestFocus();
             }
