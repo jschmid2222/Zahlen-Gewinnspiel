@@ -1,5 +1,6 @@
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.Color;
 
 public class GewinnController {
 
@@ -38,6 +39,22 @@ public class GewinnController {
                     view.lblGesamtPunkte.setText(
                             String.valueOf(model.getGesamtPunkte())
                     );
+                    if (model.hatGewonnen()) {
+                        view.lblRundenErgebnis.setBackground(Color.GREEN);
+                        view.lblGesamtPunkte.setBackground(Color.GREEN);
+                    } else if (model.hatVerloren()) {
+                        view.lblRundenErgebnis.setBackground(Color.RED);
+                        view.lblGesamtPunkte.setBackground(Color.RED);
+                    } else if (model.getRundenErgebnis() > 0) {
+                        view.lblRundenErgebnis.setBackground(Color.GREEN);
+                        view.lblGesamtPunkte.setBackground(Color.GREEN);
+                    } else if (model.getRundenErgebnis() < 0) {
+                        view.lblRundenErgebnis.setBackground(Color.RED);
+                        view.lblGesamtPunkte.setBackground(Color.RED);
+                    } else {
+                        view.lblRundenErgebnis.setBackground(Color.WHITE);
+                        view.lblGesamtPunkte.setBackground(Color.WHITE);
+                    }
 
                 } catch (NumberFormatException ex) {
 
@@ -52,6 +69,9 @@ public class GewinnController {
                 view.txtSpieler.setText("");
                 view.txtComputer.setText("");
                 view.lblRundenErgebnis.setText("");
+
+                view.lblRundenErgebnis.setBackground(Color.WHITE);
+                view.lblGesamtPunkte.setBackground(Color.WHITE);
 
                 view.txtSpieler.requestFocus();
             }
