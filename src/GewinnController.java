@@ -32,26 +32,56 @@ public class GewinnController {
                             String.valueOf(model.getComputerZahl())
                     );
 
-                    view.lblRundenErgebnis.setText(
-                            String.valueOf(model.getRundenErgebnis())
-                    );
+                    if (model.hatGewonnen()) {
+
+                        view.lblRundenErgebnis.setText("Gewonnen");
+
+                    } else if (model.hatVerloren()) {
+
+                        view.lblRundenErgebnis.setText("Verloren");
+
+                    } else if (model.getRundenErgebnis() > 0) {
+
+                        view.lblRundenErgebnis.setText(
+                                "+" + model.getRundenErgebnis()
+                        );
+
+                    } else {
+
+                        view.lblRundenErgebnis.setText(
+                                String.valueOf(model.getRundenErgebnis())
+                        );
+                    }
 
                     view.lblGesamtPunkte.setText(
                             String.valueOf(model.getGesamtPunkte())
                     );
+
+                    view.txtSpieler.setEditable(false);
+                    view.btnNochmal.setEnabled(true);
+
                     if (model.hatGewonnen()) {
+
                         view.lblRundenErgebnis.setBackground(Color.GREEN);
                         view.lblGesamtPunkte.setBackground(Color.GREEN);
+
                     } else if (model.hatVerloren()) {
+
                         view.lblRundenErgebnis.setBackground(Color.RED);
                         view.lblGesamtPunkte.setBackground(Color.RED);
+
                     } else if (model.getRundenErgebnis() > 0) {
+
                         view.lblRundenErgebnis.setBackground(Color.GREEN);
                         view.lblGesamtPunkte.setBackground(Color.GREEN);
+
                     } else if (model.getRundenErgebnis() < 0) {
+
                         view.lblRundenErgebnis.setBackground(Color.RED);
                         view.lblGesamtPunkte.setBackground(Color.RED);
+
                     } else {
+
                         view.lblRundenErgebnis.setBackground(Color.WHITE);
                         view.lblGesamtPunkte.setBackground(Color.WHITE);
                     }
@@ -68,10 +98,16 @@ public class GewinnController {
 
                 view.txtSpieler.setText("");
                 view.txtComputer.setText("");
-                view.lblRundenErgebnis.setText("");
+
+                view.lblRundenErgebnis.setText(
+                        "Tippe eine Zahl von 1 bis 9"
+                );
 
                 view.lblRundenErgebnis.setBackground(Color.WHITE);
                 view.lblGesamtPunkte.setBackground(Color.WHITE);
+
+                view.txtSpieler.setEditable(true);
+                view.btnNochmal.setEnabled(false);
 
                 view.txtSpieler.requestFocus();
             }

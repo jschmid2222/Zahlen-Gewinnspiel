@@ -13,7 +13,7 @@ public class GewinnView extends JFrame {
 
     public GewinnView() {
 
-        setTitle("Zahlen-Gewinnspiel (v1.0)");
+        setTitle("Zahlen-Gewinnspiel (v2.0)");
         setSize(500, 250);
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setLocationRelativeTo(null);
@@ -25,8 +25,11 @@ public class GewinnView extends JFrame {
         oben.add(new JLabel("Rundenergebnis:", SwingConstants.CENTER));
         oben.add(new JLabel("Gesamtpunkte:", SwingConstants.CENTER));
 
-        lblRundenErgebnis = new JLabel("", SwingConstants.CENTER);
-        lblGesamtPunkte = new JLabel("30", SwingConstants.CENTER);
+        lblRundenErgebnis =
+                new JLabel("Tippe eine Zahl von 1 bis 9", SwingConstants.CENTER);
+
+        lblGesamtPunkte =
+                new JLabel("30", SwingConstants.CENTER);
 
         lblRundenErgebnis.setOpaque(true);
         lblGesamtPunkte.setOpaque(true);
@@ -56,7 +59,9 @@ public class GewinnView extends JFrame {
         JPanel unten = new JPanel();
 
         btnNochmal = new JButton("Noch einmal!");
+
         btnNochmal.setEnabled(false);
+
         unten.add(btnNochmal);
 
         add(oben, BorderLayout.NORTH);
